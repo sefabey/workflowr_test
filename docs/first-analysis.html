@@ -319,7 +319,7 @@ shared across the workflowr files. -->
 <p><strong>Last updated:</strong> 2017-11-03</p>
 <!-- Insert the code version (Git commit SHA1) if Git repository exists and R
  package git2r is installed -->
-<p><strong>Code version:</strong> eedccfe</p>
+<p><strong>Code version:</strong> b73e46d</p>
 <!-- Add your analysis here -->
 <pre class="r"><code>library(tidyverse)</code></pre>
 <pre><code>Loading tidyverse: ggplot2
@@ -430,94 +430,20 @@ colnames(tdm_both) &lt;-  c(&quot;Antagonistic&quot;, &quot;Not Antagonistic&quo
 <p>And here is a comparison cloud. Note that words from antagonistic content are in <strong>red</strong> and words from non-antagonistic content are in <strong>black</strong>.</p>
 <pre class="r"><code>comparison.cloud(tdm_both, random.order=FALSE,
                  colors = c(&quot;red&quot;, &quot;black&quot;),
-                 scale = c(3, 0.7),
-                 title.size=1.5, max.words=200, rot.per = 0.3)</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : jewlooked could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : windowhe could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : noteversee could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : need could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : victims could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : getting could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : business could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : invented could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : backing could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : pagesunday could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : yous could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : cowards could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : maybe could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : wait could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : enemies could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : isnt could not be fit on page. It will not be plotted.</code></pre>
+                 scale = c(2.8, 0.6),
+                 title.size=1.5, max.words=180, rot.per = 0.3)</code></pre>
 <pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
 c(&quot;red&quot;, : defendeurope could not be fit on page. It will not be plotted.</code></pre>
 <pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : troll could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : goldschmidt could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
 c(&quot;red&quot;, : europerabbi could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : pinchas could not be fit on page. It will not be plotted.</code></pre>
 <pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
 c(&quot;red&quot;, : theattack could not be fit on page. It will not be plotted.</code></pre>
 <pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : allies could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : haters could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
 c(&quot;red&quot;, : natural could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : told could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : small could not be fit on page. It will not be plotted.</code></pre>
 <pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
 c(&quot;red&quot;, : anniversary could not be fit on page. It will not be plotted.</code></pre>
 <pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
 c(&quot;red&quot;, : australian could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : camps could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : alaqsa could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : world could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : evil could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : worldlook could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : zionazis could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : lying could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : unseat could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : military could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : mate could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : sunday could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : complaints could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : picture could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : wipe could not be fit on page. It will not be plotted.</code></pre>
 <p><img src="figure/first-analysis.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Lastly, the most common 25 words between groups.</p>
 <pre class="r"><code>commonality.cloud(tdm_both, random.order=FALSE, 
