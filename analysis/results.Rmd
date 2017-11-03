@@ -5,4 +5,4 @@ output: html_document
 
 
 * [ComparisonCloud](first-analysis.html)
-* [Comparison Clouds for all 3 events](comparison_clouds.Rmd) 
+* [Comparison Clouds for all 3 events](comparison_clouds.html) 
