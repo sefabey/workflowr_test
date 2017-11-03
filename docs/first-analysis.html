@@ -272,7 +272,7 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">workflowr</a>
+      <a class="navbar-brand" href="index.html">Sefa Ozalp</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -319,7 +319,7 @@ shared across the workflowr files. -->
 <p><strong>Last updated:</strong> 2017-11-03</p>
 <!-- Insert the code version (Git commit SHA1) if Git repository exists and R
  package git2r is installed -->
-<p><strong>Code version:</strong> 7fb3b1e</p>
+<p><strong>Code version:</strong> e09f943</p>
 <!-- Add your analysis here -->
 <pre class="r"><code>library(tidyverse)</code></pre>
 <pre><code>Loading tidyverse: ggplot2
@@ -430,8 +430,8 @@ colnames(tdm_both) &lt;-  c(&quot;Antagonistic&quot;, &quot;Not Antagonistic&quo
 <p>And here is a comparison cloud. Note that words from antagonistic content are in <strong>red</strong> and words from non-antagonistic content are in <strong>black</strong>.</p>
 <pre class="r"><code>comparison.cloud(tdm_both, random.order=FALSE,
                  colors = c(&quot;red&quot;, &quot;black&quot;),
-                 scale = c(2.8, 0.6),
-                 title.size=1.5, max.words=180, rot.per = 0.3)</code></pre>
+                 scale = c(2.8, 0.5),
+                 title.size=1.5, max.words=150, rot.per = 0.3)</code></pre>
 <p><img src="figure/first-analysis.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Lastly, the most common 25 words between groups.</p>
 <pre class="r"><code>commonality.cloud(tdm_both, random.order=FALSE, 
