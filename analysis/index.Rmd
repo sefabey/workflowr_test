@@ -5,17 +5,11 @@ output:
     toc: false
 ---
 
+Hello, stranger.
+
 This is a test website created using workflowr package. So far, it is working great.
-The author of the package argues it is good for:
 
-*  Easier to build and extend the website using the new tools in the [rmarkdown][] package and [latest RStudio release][rstudio]
-*  Easier to deploy the website with Git and GitHub by only using one branch
-
-[rmarkdown]: http://rmarkdown.rstudio.com/rmarkdown_websites.htm
-[rstudio]: https://www.rstudio.com/products/rstudio/download/preview/
-
-Below is an example page:
+Below is an example page created using **[workflowr](https://jdblischak.github.io/workflowr/index.html)** package:
 
 1. Click **[here](first-analysis.html)** to see a **Wordcloud**.
 2. Alternatively, click **[here](https://www.youtube.com/watch?v=oHg5SJYRHA0)** if you feel lucky.
-
