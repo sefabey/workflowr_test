@@ -1,0 +1,83 @@
+---
+title: "Plotting Geolocations"
+author: "Sefa Ozalp"
+date: 2017-11-02
+output: html_document
+---
+
+<!-- The file analysis/chunks.R contains chunks that define default settings
+shared across the workflowr files. -->
+```{r read-chunk, include=FALSE, cache=FALSE}
+knitr::read_chunk("chunks.R")
+```
+
+<!-- Update knitr chunk options -->
+```{r knitr-opts-chunk, include=FALSE}
+```
+
+<!-- Insert the date the file was last updated -->
+```{r last-updated, echo=FALSE, results='asis'}
+```
+
+<!-- Insert the code version (Git commit SHA1) if Git repository exists and R
+ package git2r is installed -->
+```{r code-version, echo=FALSE, results='asis'}
+```
+
+<!-- Add your analysis here -->
+
+```{r}
+library(tidyverse)
+library(tm)
+library(wordcloud)
+library(RColorBrewer)
+event3 <- read_csv("/Users/sefaozalp/Documents/Work/CST/event_data/event03.csv")
+
+clean.text = function(x)
+{
+   # tolower
+   x = tolower(x)
+   # remove rt
+   x = gsub("rt", "", x)
+   # remove at
+   x = gsub("@\\w+", "", x)
+   # remove punctuation
+   x = gsub("[[:punct:]]", "", x)
+   # remove numbers
+   x = gsub("[[:digit:]]", "", x)
+   # remove links http
+   x = gsub("http\\w+", "", x)
+   # remove tabs
+   x = gsub("[ |\t]{2,}", "", x)
+   # remove blank spaces at the beginning
+   x = gsub("^ ", "", x)
+   # remove blank spaces at the end
+   x = gsub(" $", "", x)
+   #remove stop words
+   x= removeWords(x, c(stopwords("english"), "jew", "nazi", "nazis", "jews", "jewish", "amp"))
+   return(x)
+}
+
+event3$tweet.text.str.clean <- event3$tweet.text.str %>% clean.text()
+
+# create corpus
+corpus <- Corpus(VectorSource(event3$tweet.text.str.clean))
+
+# create term-document matrix
+tdm = TermDocumentMatrix(corpus)
+
+# convert as matrix
+# tdm = as.matrix(tdm) crashing 
+
+wordcloud(corpus, max.words = 100, random.order = FALSE, random.color = FALSE, rot.per = 0.2,
+          scale = c(3, 0.5),
+          colors = brewer.pal(6,"Dark2"))
+
+```
+
+
+## Session information
+
+<!-- Insert the session information into the document -->
+```{r session-info}
+```
