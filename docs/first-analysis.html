@@ -319,7 +319,7 @@ shared across the workflowr files. -->
 <p><strong>Last updated:</strong> 2017-11-03</p>
 <!-- Insert the code version (Git commit SHA1) if Git repository exists and R
  package git2r is installed -->
-<p><strong>Code version:</strong> 217d96a</p>
+<p><strong>Code version:</strong> 5fc591b</p>
 <!-- Add your analysis here -->
 <pre class="r"><code>library(tidyverse)</code></pre>
 <pre><code>Loading tidyverse: ggplot2
@@ -430,7 +430,7 @@ colnames(tdm_both) &lt;-  c(&quot;Antagonistic&quot;, &quot;Not Antagonistic&quo
 <p>And here is a comparison cloud. Note that words from antagonistic content are in <strong>red</strong> and words from non-antagonistic content are in <strong>black</strong>.</p>
 <pre class="r"><code>comparison.cloud(tdm_both, random.order=FALSE,
                  colors = c(&quot;red&quot;, &quot;black&quot;),
-                 scale = c(2.8, 0.5),
+                 scale = c(2.5, 0.5),
                  title.size=1.5, max.words=150, rot.per = 0.3)</code></pre>
 <p><img src="figure/first-analysis.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Lastly, the most common 25 words between groups.</p>
