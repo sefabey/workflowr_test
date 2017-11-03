@@ -103,8 +103,8 @@ And here is a comparison cloud. Note that words from antagonistic content are in
 ```{r}
 comparison.cloud(tdm_both, random.order=FALSE,
                  colors = c("red", "black"),
-                 scale = c(3, 0.7),
-                 title.size=1.5, max.words=200, rot.per = 0.3)
+                 scale = c(2.8, 0.6),
+                 title.size=1.5, max.words=180, rot.per = 0.3)
 ```
 
 Lastly, the most common 25 words between groups.
