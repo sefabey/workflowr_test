@@ -91,7 +91,7 @@ colnames(tdm_both) <-  c("Antagonistic", "Not Antagonistic")
 
 
 Now here is a wordcloud of most common 150 words in the Event 3:
-```{r}
+```{r, warning=FALSE}
 wordcloud(corpus_both, max.words = 150, random.order = FALSE, random.color = FALSE, rot.per = 0.3,
           scale = c(3, 0.5),
           colors = brewer.pal(6,"Dark2"))
@@ -100,7 +100,7 @@ wordcloud(corpus_both, max.words = 150, random.order = FALSE, random.color = FAL
 
 And here is a comparison cloud. Note that words from antagonistic content are in **red** and words from non-antagonistic content are in **black**.
 
-```{r}
+```{r, warning=FALSE}
 comparison.cloud(tdm_both, random.order=FALSE,
                  colors = c("red", "black"),
                  scale = c(2.8, 0.6),
@@ -109,7 +109,7 @@ comparison.cloud(tdm_both, random.order=FALSE,
 
 Lastly, the most common 25 words between groups.
 
-```{r}
+```{r, warning=FALSE}
 commonality.cloud(tdm_both, random.order=FALSE, 
                   colors = brewer.pal(4, "Dark2"),
                   title.size=1.5, max.words=25)
