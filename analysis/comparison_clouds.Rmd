@@ -1,0 +1,244 @@
+---
+title: "Comparison Clouds"
+author: "Sefa Ozalp"
+date: 2017-11-03
+output: html_document
+---
+
+<!-- The file analysis/chunks.R contains chunks that define default settings
+shared across the workflowr files. -->
+```{r read-chunk, include=FALSE, cache=FALSE}
+knitr::read_chunk("chunks.R")
+```
+
+<!-- Update knitr chunk options -->
+```{r knitr-opts-chunk, include=FALSE}
+```
+
+<!-- Insert the date the file was last updated -->
+```{r last-updated, echo=FALSE, results='asis'}
+```
+
+<!-- Insert the code version (Git commit SHA1) if Git repository exists and R
+ package git2r is installed -->
+```{r code-version, echo=FALSE, results='asis'}
+```
+
+<!-- Add your analysis here -->
+
+This page will present comparison clouds for all 3 events.
+
+#Event 1
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+library(tidyverse)
+library(tm)
+library(wordcloud)
+library(RColorBrewer)
+# library(tidytext)
+
+#import data
+event1 <- read_csv("/Users/sefaozalp/Documents/Work/CST/event_data/event01.csv")
+
+#text clean function
+clean.text = function(x)
+{
+  # tolower
+  x = tolower(x)
+  # remove rt
+  x = gsub("rt", "", x)
+  # remove at
+  x = gsub("@\\w+", "", x)
+  # remove punctuation
+  x = gsub("[[:punct:]]", "", x)
+  # remove numbers
+  x = gsub("[[:digit:]]", "", x)
+  # remove links http
+  x = gsub("http\\w+", "", x)
+  # remove tabs
+  x = gsub("[ |\t]{2,}", "", x)
+  # remove blank spaces at the beginning
+  x = gsub("^ ", "", x)
+  # remove blank spaces at the end
+  x = gsub(" $", "", x)
+  # remove line ends
+  x = gsub("\n", " ", x)
+  #remove stop words
+  x= removeWords(x, c(stopwords("english"), "jew", "nazi", "nazis", "jews", "jewish", "amp", "dont", "like", "just"))
+  return(x)
+}
+
+
+event1_hate <- event1 %>% 
+  filter(classifier.hate.yes==T) %>%
+  mutate(tweet_cleaned= tweet.text.str %>% clean.text())
+
+event1_nohate <- event1 %>% 
+  filter(classifier.hate.yes==F) %>%
+  mutate(tweet_cleaned= tweet.text.str %>% clean.text())
+
+
+hate_text <- paste(event1_hate$tweet_cleaned, collapse = " ")
+nohate_text <- paste(event1_nohate$tweet_cleaned, collapse = " ")
+both_text <- c(hate_text,nohate_text)
+
+# create corpus
+corpus_both <- Corpus(VectorSource(both_text))
+
+# create term-document matrix
+tdm_both <- TermDocumentMatrix(corpus_both)
+
+# convert as matrix
+tdm_both <- as.matrix(tdm_both)
+colnames(tdm_both) <-  c("Antagonistic", "Not Antagonistic")
+
+comparison.cloud(tdm_both, random.order=FALSE,
+                 colors = c("red", "black"),
+                 scale = c(2.5, 0.5),
+                 title.size=1.5, max.words=150, rot.per = 0.2)
+```
+
+
+#Event 2
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+library(tidyverse)
+library(tm)
+library(wordcloud)
+library(RColorBrewer)
+# library(tidytext)
+
+#import data
+event2 <- read_csv("/Users/sefaozalp/Documents/Work/CST/event_data/event02.csv")
+
+#text clean function
+clean.text = function(x)
+{
+  # tolower
+  x = tolower(x)
+  # remove rt
+  x = gsub("rt", "", x)
+  # remove at
+  x = gsub("@\\w+", "", x)
+  # remove punctuation
+  x = gsub("[[:punct:]]", "", x)
+  # remove numbers
+  x = gsub("[[:digit:]]", "", x)
+  # remove links http
+  x = gsub("http\\w+", "", x)
+  # remove tabs
+  x = gsub("[ |\t]{2,}", "", x)
+  # remove blank spaces at the beginning
+  x = gsub("^ ", "", x)
+  # remove blank spaces at the end
+  x = gsub(" $", "", x)
+  # remove line ends
+  x = gsub("\n", " ", x)
+  #remove stop words
+  x= removeWords(x, c(stopwords("english"), "jew", "nazi", "nazis", "jews", "jewish", "amp", "dont", "like", "just"))
+  return(x)
+}
+
+
+event2_hate <- event2 %>% 
+  filter(classifier.hate.yes==T) %>%
+  mutate(tweet_cleaned= tweet.text.str %>% clean.text())
+
+event2_nohate <- event2 %>% 
+  filter(classifier.hate.yes==F) %>%
+  mutate(tweet_cleaned= tweet.text.str %>% clean.text())
+
+
+hate_text <- paste(event2_hate$tweet_cleaned, collapse = " ")
+nohate_text <- paste(event2_nohate$tweet_cleaned, collapse = " ")
+both_text <- c(hate_text,nohate_text)
+
+# create corpus
+corpus_both <- Corpus(VectorSource(both_text))
+
+# create term-document matrix
+tdm_both <- TermDocumentMatrix(corpus_both)
+
+# convert as matrix
+tdm_both <- as.matrix(tdm_both)
+colnames(tdm_both) <-  c("Antagonistic", "Not Antagonistic")
+
+comparison.cloud(tdm_both, random.order=FALSE,
+                 colors = c("red", "black"),
+                 scale = c(2.5, 0.5),
+                 title.size=1.5, max.words=150, rot.per = 0.2)
+```
+
+#Event 3
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+library(tidyverse)
+library(tm)
+library(wordcloud)
+library(RColorBrewer)
+# library(tidytext)
+
+#import data
+event3 <- read_csv("/Users/sefaozalp/Documents/Work/CST/event_data/event03.csv")
+
+#text clean function
+clean.text = function(x)
+{
+  # tolower
+  x = tolower(x)
+  # remove rt
+  x = gsub("rt", "", x)
+  # remove at
+  x = gsub("@\\w+", "", x)
+  # remove punctuation
+  x = gsub("[[:punct:]]", "", x)
+  # remove numbers
+  x = gsub("[[:digit:]]", "", x)
+  # remove links http
+  x = gsub("http\\w+", "", x)
+  # remove tabs
+  x = gsub("[ |\t]{2,}", "", x)
+  # remove blank spaces at the beginning
+  x = gsub("^ ", "", x)
+  # remove blank spaces at the end
+  x = gsub(" $", "", x)
+  # remove line ends
+  x = gsub("\n", " ", x)
+  #remove stop words
+  x= removeWords(x, c(stopwords("english"), "jew", "nazi", "nazis", "jews", "jewish", "amp", "dont", "like", "just"))
+  return(x)
+}
+
+
+event3_hate <- event3 %>% 
+  filter(classifier.hate.yes==T) %>%
+  mutate(tweet_cleaned= tweet.text.str %>% clean.text())
+
+event3_nohate <- event3 %>% 
+  filter(classifier.hate.yes==F) %>%
+  mutate(tweet_cleaned= tweet.text.str %>% clean.text())
+
+
+hate_text <- paste(event3_hate$tweet_cleaned, collapse = " ")
+nohate_text <- paste(event3_nohate$tweet_cleaned, collapse = " ")
+both_text <- c(hate_text,nohate_text)
+
+# create corpus
+corpus_both <- Corpus(VectorSource(both_text))
+
+# create term-document matrix
+tdm_both <- TermDocumentMatrix(corpus_both)
+
+# convert as matrix
+tdm_both <- as.matrix(tdm_both)
+colnames(tdm_both) <-  c("Antagonistic", "Not Antagonistic")
+
+comparison.cloud(tdm_both, random.order=FALSE,
+                 colors = c("red", "black"),
+                 scale = c(2.5, 0.5),
+                 title.size=1.5, max.words=150, rot.per = 0.2)
+```
+
+
+## Session information
+
+<!-- Insert the session information into the document -->
+```{r session-info}
+```
