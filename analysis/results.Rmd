@@ -4,4 +4,4 @@ output: html_document
 ---
 
 
-* [Plotting Geolocations](first-analysis.html)
+* [ComparisonCloud](first-analysis.html)
