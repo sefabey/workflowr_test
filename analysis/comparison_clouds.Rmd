@@ -29,7 +29,7 @@ knitr::read_chunk("chunks.R")
 This page will present comparison clouds for all 3 events.
 
 ##Event 1
-```{r, warning=FALSE, echo=FALSE, message=FALSE}
+```{r, warning=FALSE, echo=FALSE, message=FALSE, fig.width=7 ,fig.height=7}
 library(tidyverse)
 library(tm)
 library(wordcloud)
@@ -99,7 +99,7 @@ comparison.cloud(tdm_both, random.order=FALSE,
 
 
 ##Event 2
-```{r, warning=FALSE, echo=FALSE, message=FALSE}
+```{r, warning=FALSE, echo=FALSE, message=FALSE, fig.width=7 ,fig.height=7}
 library(tidyverse)
 library(tm)
 library(wordcloud)
@@ -168,7 +168,7 @@ comparison.cloud(tdm_both, random.order=FALSE,
 ```
 
 ##Event 3
-```{r, warning=FALSE, echo=FALSE, message=FALSE}
+```{r, warning=FALSE, echo=FALSE, message=FALSE, fig.width=7 ,fig.height=7}
 library(tidyverse)
 library(tm)
 library(wordcloud)
