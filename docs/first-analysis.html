@@ -319,7 +319,7 @@ shared across the workflowr files. -->
 <p><strong>Last updated:</strong> 2017-11-03</p>
 <!-- Insert the code version (Git commit SHA1) if Git repository exists and R
  package git2r is installed -->
-<p><strong>Code version:</strong> b73e46d</p>
+<p><strong>Code version:</strong> 7fb3b1e</p>
 <!-- Add your analysis here -->
 <pre class="r"><code>library(tidyverse)</code></pre>
 <pre><code>Loading tidyverse: ggplot2
@@ -432,173 +432,11 @@ colnames(tdm_both) &lt;-  c(&quot;Antagonistic&quot;, &quot;Not Antagonistic&quo
                  colors = c(&quot;red&quot;, &quot;black&quot;),
                  scale = c(2.8, 0.6),
                  title.size=1.5, max.words=180, rot.per = 0.3)</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : defendeurope could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : europerabbi could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : theattack could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : natural could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : anniversary could not be fit on page. It will not be plotted.</code></pre>
-<pre><code>Warning in comparison.cloud(tdm_both, random.order = FALSE, colors =
-c(&quot;red&quot;, : australian could not be fit on page. It will not be plotted.</code></pre>
 <p><img src="figure/first-analysis.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Lastly, the most common 25 words between groups.</p>
 <pre class="r"><code>commonality.cloud(tdm_both, random.order=FALSE, 
                   colors = brewer.pal(4, &quot;Dark2&quot;),
                   title.size=1.5, max.words=25)</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
-<pre><code>Warning in strwidth(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in strheight(words[i], cex = size[i], ...): &quot;title.size&quot; is not a
-graphical parameter</code></pre>
-<pre><code>Warning in text.default(x1, y1, words[i], cex = size[i], offset = 0, srt =
-rotWord * : &quot;title.size&quot; is not a graphical parameter</code></pre>
 <p><img src="figure/first-analysis.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>```</p>
 <div id="session-information" class="section level2">
