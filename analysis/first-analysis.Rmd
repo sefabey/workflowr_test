@@ -1,7 +1,7 @@
 ---
-title: "Plotting Geolocations"
+title: "ComparisonCloud"
 author: "Sefa Ozalp"
-date: 2017-11-02
+date: 2017-11-03
 output: html_document
 ---
 
@@ -31,47 +31,91 @@ library(tidyverse)
 library(tm)
 library(wordcloud)
 library(RColorBrewer)
+# library(tidytext)
+
+#import data
 event3 <- read_csv("/Users/sefaozalp/Documents/Work/CST/event_data/event03.csv")
 
+#text clean function
 clean.text = function(x)
 {
-   # tolower
-   x = tolower(x)
-   # remove rt
-   x = gsub("rt", "", x)
-   # remove at
-   x = gsub("@\\w+", "", x)
-   # remove punctuation
-   x = gsub("[[:punct:]]", "", x)
-   # remove numbers
-   x = gsub("[[:digit:]]", "", x)
-   # remove links http
-   x = gsub("http\\w+", "", x)
-   # remove tabs
-   x = gsub("[ |\t]{2,}", "", x)
-   # remove blank spaces at the beginning
-   x = gsub("^ ", "", x)
-   # remove blank spaces at the end
-   x = gsub(" $", "", x)
-   #remove stop words
-   x= removeWords(x, c(stopwords("english"), "jew", "nazi", "nazis", "jews", "jewish", "amp"))
-   return(x)
+  # tolower
+  x = tolower(x)
+  # remove rt
+  x = gsub("rt", "", x)
+  # remove at
+  x = gsub("@\\w+", "", x)
+  # remove punctuation
+  x = gsub("[[:punct:]]", "", x)
+  # remove numbers
+  x = gsub("[[:digit:]]", "", x)
+  # remove links http
+  x = gsub("http\\w+", "", x)
+  # remove tabs
+  x = gsub("[ |\t]{2,}", "", x)
+  # remove blank spaces at the beginning
+  x = gsub("^ ", "", x)
+  # remove blank spaces at the end
+  x = gsub(" $", "", x)
+  # remove line ends
+  x = gsub("\n", " ", x)
+  #remove stop words
+  x= removeWords(x, c(stopwords("english"), "jew", "nazi", "nazis", "jews", "jewish", "amp", "dont", "like", "just"))
+  return(x)
 }
 
-event3$tweet.text.str.clean <- event3$tweet.text.str %>% clean.text()
+
+event3_hate <- event3 %>% 
+  filter(classifier.hate.yes==T) %>%
+  mutate(tweet_cleaned= tweet.text.str %>% clean.text())
+
+event3_nohate <- event3 %>% 
+  filter(classifier.hate.yes==F) %>%
+  mutate(tweet_cleaned= tweet.text.str %>% clean.text())
+
+
+hate_text <- paste(event3_hate$tweet_cleaned, collapse = " ")
+nohate_text <- paste(event3_nohate$tweet_cleaned, collapse = " ")
+both_text <- c(hate_text,nohate_text)
 
 # create corpus
-corpus <- Corpus(VectorSource(event3$tweet.text.str.clean))
+corpus_both <- Corpus(VectorSource(both_text))
 
 # create term-document matrix
-tdm = TermDocumentMatrix(corpus)
+tdm_both <- TermDocumentMatrix(corpus_both)
 
 # convert as matrix
-# tdm = as.matrix(tdm) crashing 
+tdm_both <- as.matrix(tdm_both)
+colnames(tdm_both) <-  c("Antagonistic", "Not Antagonistic")
+```
 
-wordcloud(corpus, max.words = 100, random.order = FALSE, random.color = FALSE, rot.per = 0.2,
+
+Now here is a wordcloud of most common 150 words in the Event 3:
+```{r}
+wordcloud(corpus_both, max.words = 150, random.order = FALSE, random.color = FALSE, rot.per = 0.3,
           scale = c(3, 0.5),
           colors = brewer.pal(6,"Dark2"))
+```
+
+
+And here is a comparison cloud. Note that words from antagonistic content are in **red** and words from non-antagonistic content are in **black**.
+
+```{r}
+comparison.cloud(tdm_both, random.order=FALSE,
+                 colors = c("red", "black"),
+                 scale = c(3, 0.7),
+                 title.size=1.5, max.words=200, rot.per = 0.3)
+```
+
+Lastly, the most common 25 words between groups.
+
+```{r}
+commonality.cloud(tdm_both, random.order=FALSE, 
+                  colors = brewer.pal(4, "Dark2"),
+                  title.size=1.5, max.words=25)
+```
+
+
 
 ```
 

@@ -11,5 +11,5 @@ This is a test website created using workflowr package. So far, it is working gr
 
 Below is an example page created using **[workflowr](https://jdblischak.github.io/workflowr/index.html)** package:
 
-1. Click **[here](first-analysis.html)** to see a **Wordcloud**.
-2. Alternatively, click **[here](https://www.youtube.com/watch?v=oHg5SJYRHA0)** if you feel lucky.
+1. Click **[here](first-analysis.html)** to see a **comparison cloud**.
+2. Alternatively, click **[here](https://www.youtube.com/watch?v=oHg5SJYRHA0)** if you feel lucky. (For testing purposes)
