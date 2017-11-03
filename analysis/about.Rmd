@@ -5,4 +5,4 @@ output:
     toc: false
 ---
 
-Describe your project.
+This page is created by Sefa Ozalp but all credit goes to the author of the workflowr package author.
