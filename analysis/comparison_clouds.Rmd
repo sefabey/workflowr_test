@@ -28,7 +28,7 @@ knitr::read_chunk("chunks.R")
 
 This page will present comparison clouds for all 3 events.
 
-#Event 1
+##Event 1
 ```{r, warning=FALSE, echo=FALSE, message=FALSE}
 library(tidyverse)
 library(tm)
@@ -98,7 +98,7 @@ comparison.cloud(tdm_both, random.order=FALSE,
 ```
 
 
-#Event 2
+##Event 2
 ```{r, warning=FALSE, echo=FALSE, message=FALSE}
 library(tidyverse)
 library(tm)
@@ -167,7 +167,7 @@ comparison.cloud(tdm_both, random.order=FALSE,
                  title.size=1.5, max.words=150, rot.per = 0.2)
 ```
 
-#Event 3
+##Event 3
 ```{r, warning=FALSE, echo=FALSE, message=FALSE}
 library(tidyverse)
 library(tm)
