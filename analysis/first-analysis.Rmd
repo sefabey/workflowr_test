@@ -103,7 +103,7 @@ And here is a comparison cloud. Note that words from antagonistic content are in
 ```{r, warning=FALSE}
 comparison.cloud(tdm_both, random.order=FALSE,
                  colors = c("red", "black"),
-                 scale = c(2.8, 0.5),
+                 scale = c(2.5, 0.5),
                  title.size=1.5, max.words=150, rot.per = 0.3)
 ```
 
