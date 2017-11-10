@@ -1,0 +1,109 @@
+---
+title: "Calculating Montly Mean Counts of Antagonistic Tweet Counts"
+author: "Sefa Ozalp"
+date: 2017-11-09
+output: html_document
+---
+
+<!-- The file analysis/chunks.R contains chunks that define default settings
+shared across the workflowr files. -->
+```{r read-chunk, include=FALSE, cache=FALSE}
+knitr::read_chunk("chunks.R")
+```
+
+<!-- Update knitr chunk options -->
+```{r knitr-opts-chunk, include=FALSE}
+```
+
+<!-- Insert the date the file was last updated -->
+```{r last-updated, echo=FALSE, results='asis'}
+```
+
+<!-- Insert the code version (Git commit SHA1) if Git repository exists and R
+ package git2r is installed -->
+```{r code-version, echo=FALSE, results='asis'}
+```
+
+<!-- Add your analysis here -->
+
+This is a quick script to calculate mean monthly counts of antagonistic speech in the data set. 
+
+
+First data I/O and converting to time series.
+
+
+```{r, results='hide', warning=FALSE, message=FALSE}
+options(digits=3)
+library(data.table)
+library(tidyverse)
+extrafont::loadfonts()
+library(xts)
+library(hrbrthemes)
+
+complete_dataset <- fread("~/Documents/Work/CST/event_data/big.dataset.complete.dataset.raw_GeoAgentsandHate.csv", stringsAsFactors = F)
+
+complete_dataset$tweet.time.posix <- complete_dataset$tweet.time.posix %>% as.POSIXct()
+
+antagonistic_subset <- complete_dataset %>% 
+  select(classifier.hate.yes, tweet.time.posix) %>% 
+  mutate(tweet.time.posix= as.Date(tweet.time.posix), classifier.hate.yes= as.numeric(classifier.hate.yes)) %>% 
+  replace_na(., list(classifier.hate.yes=0))
+  
+ts_antagonistic<- xts(x = antagonistic_subset$classifier.hate.yes, order.by = antagonistic_subset$tweet.time.posix)
+ts_sum_antagonistic <- apply.daily(ts_antagonistic,sum)
+ts_sum_df_antagonistic <- data.frame(date=index(ts_sum_antagonistic), coredata(ts_sum_antagonistic))
+colnames(ts_sum_df_antagonistic)=c('date','sum')
+
+
+```
+
+
+Next, lets take a look at the antagonistic time series plot again. 
+
+
+```{r, out.height=9, out.width=9}
+
+b <- ggplot(ts_sum_df_antagonistic)+
+     geom_line(aes(x=date,y=sum), colour="red")+
+     labs( x= 'Time (Daily)', y= "Tweet Count",
+           title = "Timeseries Plot of Tweet Counts For Tweets \nClassified as Antagonistic ", 
+           #subtitle = "Graph 2", 
+           caption = "Social Data Science Lab") +
+     theme_ipsum_rc()+
+     scale_x_date(date_breaks = "1 month",date_labels = ("%b-%y"))
+
+b
+?scale_x
+```
+
+ Finally here is the information we have been looking for.
+ 
+```{r}
+start(ts_antagonistic) # first day of the dataset
+end(ts_antagonistic) # last day of the dataset
+
+monthly <- apply.monthly(ts_antagonistic,sum)
+monthly <- data.frame(date=index(monthly),coredata(monthly))
+# monthly %>% glimpse()
+
+summary_mean <- monthly %>% 
+  mutate(pre_first_peak= ifelse(date<"2016-05-01", 1, 0)) %>% #selected first day of May as the peak ends then 
+  group_by(pre_first_peak) %>% 
+  summarise(., mean(coredata.monthly.)) %>% 
+  select(pre_first_peak=pre_first_peak, mean_antag_count=`mean(coredata.monthly.)`)
+
+pre_count <- round(summary_mean$mean_antag_count[2], 2)
+post_count <- round(summary_mean$mean_antag_count[1], 2)
+  
+```
+
+As seen above, mean monthly antagonistic tweet count before the first peak is **`r pre_count `**; whereas mean monthly antagonistic tweet count is 
+**`r pre_count `**. 
+
+ 
+ 
+## Session information
+
+<!-- Insert the session information into the document -->
+```{r session-info}
+```
