@@ -66,14 +66,14 @@ Next, lets take a look at the antagonistic time series plot again.
 ```{r}
 
 b <- ggplot(ts_sum_df_antagonistic)+
-     geom_line(aes(x=date,y=sum), colour="red")+
-     labs( x= 'Time (Daily)', y= "Tweet Count",
-           title = "Timeseries Plot of Tweet Counts For Tweets \nClassified as Antagonistic ", 
+      geom_line(aes(x=date,y=sum), colour="red")+
+      labs( x= 'Time (Daily)', y= "Tweet Count",
+      title = "Timeseries Plot of Tweet Counts For Tweets \nClassified as Antagonistic ", 
            #subtitle = "Graph 2", 
-           caption = "Social Data Science Lab") +
-     theme_ipsum_rc()+
-     scale_x_date(date_breaks = "1 month",date_labels = ("%b-%y"))+
-  theme(axis.text.x = element_text(angle = 45, hjust = 0.8))
+      caption = "Social Data Science Lab") +
+      theme_ipsum_rc()+
+      scale_x_date(date_breaks = "1 month",date_labels = ("%b-%y"))+
+      theme(axis.text.x = element_text(angle = 45, hjust = 0.8))
 
 
 b
