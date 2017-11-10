@@ -61,7 +61,7 @@ colnames(ts_sum_df_antagonistic)=c('date','sum')
 Next, lets take a look at the antagonistic time series plot again. 
 
 
-```{r, out.height=9, out.width=9}
+```{r}
 
 b <- ggplot(ts_sum_df_antagonistic)+
      geom_line(aes(x=date,y=sum), colour="red")+
@@ -73,7 +73,7 @@ b <- ggplot(ts_sum_df_antagonistic)+
      scale_x_date(date_breaks = "1 month",date_labels = ("%b-%y"))
 
 b
-?scale_x
+
 ```
 
  Finally here is the information we have been looking for.
