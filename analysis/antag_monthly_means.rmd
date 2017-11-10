@@ -97,6 +97,8 @@ summary_mean <- monthly %>%
   summarise(., mean(coredata.monthly.)) %>% 
   select(pre_first_peak=pre_first_peak, mean_antag_count=`mean(coredata.monthly.)`)
 
+summary_mean #pre/post peak-1 smmary mean antagonistic tweet count table
+
 pre_count <- round(summary_mean$mean_antag_count[2], 2)
 post_count <- round(summary_mean$mean_antag_count[1], 2)
   
