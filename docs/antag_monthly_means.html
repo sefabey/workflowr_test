@@ -319,7 +319,7 @@ shared across the workflowr files. -->
 <p><strong>Last updated:</strong> 2017-11-10</p>
 <!-- Insert the code version (Git commit SHA1) if Git repository exists and R
  package git2r is installed -->
-<p><strong>Code version:</strong> a768001</p>
+<p><strong>Code version:</strong> ee6d7ba</p>
 <!-- Add your analysis here -->
 <div id="data-wrangling" class="section level2">
 <h2>Data Wrangling</h2>
@@ -378,7 +378,13 @@ summary_mean &lt;- monthly %&gt;%
   summarise(., mean(coredata.monthly.)) %&gt;% 
   select(pre_first_peak=pre_first_peak, mean_antag_count=`mean(coredata.monthly.)`)
 
-pre_count &lt;- round(summary_mean$mean_antag_count[2], 2)
+summary_mean #pre/post peak-1 smmary mean antagonistic tweet count table</code></pre>
+<pre><code># A tibble: 2 x 2
+  pre_first_peak mean_antag_count
+           &lt;dbl&gt;            &lt;dbl&gt;
+1              0             1380
+2              1             1042</code></pre>
+<pre class="r"><code>pre_count &lt;- round(summary_mean$mean_antag_count[2], 2)
 post_count &lt;- round(summary_mean$mean_antag_count[1], 2)</code></pre>
 <p>As seen above, mean monthly antagonistic tweet count before the first peak is <strong>1041.86</strong>; whereas mean monthly antagonistic tweet count is <strong>1380.33</strong>.</p>
 </div>
