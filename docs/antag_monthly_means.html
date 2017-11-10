@@ -9,9 +9,11 @@
 <meta name="generator" content="pandoc" />
 
 
+<meta name="author" content="Sefa Ozalp" />
 
+<meta name="date" content="2017-11-09" />
 
-<title>Results</title>
+<title>Calculating Montly Mean Counts of Antagonistic Tweet Counts</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -303,16 +305,117 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Results</h1>
+<h1 class="title toc-ignore">Calculating Montly Mean Counts of Antagonistic Tweet Counts</h1>
+<h4 class="author"><em>Sefa Ozalp</em></h4>
+<h4 class="date"><em>2017-11-09</em></h4>
 
 </div>
 
 
-<ul>
-<li><a href="first-analysis.html">ComparisonCloud</a></li>
-<li><a href="comparison_clouds.html">Comparison Clouds for all 3 events</a></li>
-<li><a href="antag_monthly_means.rmd">Mean monthly Antagonistic Speech Counts before and after the first peak</a></li>
-</ul>
+<!-- The file analysis/chunks.R contains chunks that define default settings
+shared across the workflowr files. -->
+<!-- Update knitr chunk options -->
+<!-- Insert the date the file was last updated -->
+<p><strong>Last updated:</strong> 2017-11-10</p>
+<!-- Insert the code version (Git commit SHA1) if Git repository exists and R
+ package git2r is installed -->
+<p><strong>Code version:</strong> 61aec97</p>
+<!-- Add your analysis here -->
+<p>This is a quick script to calculate mean monthly counts of antagonistic speech in the data set.</p>
+<p>First data I/O and converting to time series.</p>
+<pre class="r"><code>options(digits=3)
+library(data.table)
+library(tidyverse)
+extrafont::loadfonts()
+library(xts)
+library(hrbrthemes)
+
+complete_dataset &lt;- fread(&quot;~/Documents/Work/CST/event_data/big.dataset.complete.dataset.raw_GeoAgentsandHate.csv&quot;, stringsAsFactors = F)
+
+complete_dataset$tweet.time.posix &lt;- complete_dataset$tweet.time.posix %&gt;% as.POSIXct()
+
+antagonistic_subset &lt;- complete_dataset %&gt;% 
+  select(classifier.hate.yes, tweet.time.posix) %&gt;% 
+  mutate(tweet.time.posix= as.Date(tweet.time.posix), classifier.hate.yes= as.numeric(classifier.hate.yes)) %&gt;% 
+  replace_na(., list(classifier.hate.yes=0))
+  
+ts_antagonistic&lt;- xts(x = antagonistic_subset$classifier.hate.yes, order.by = antagonistic_subset$tweet.time.posix)
+ts_sum_antagonistic &lt;- apply.daily(ts_antagonistic,sum)
+ts_sum_df_antagonistic &lt;- data.frame(date=index(ts_sum_antagonistic), coredata(ts_sum_antagonistic))
+colnames(ts_sum_df_antagonistic)=c(&#39;date&#39;,&#39;sum&#39;)</code></pre>
+<p>Next, lets take a look at the antagonistic time series plot again.</p>
+<pre class="r"><code>b &lt;- ggplot(ts_sum_df_antagonistic)+
+     geom_line(aes(x=date,y=sum), colour=&quot;red&quot;)+
+     labs( x= &#39;Time (Daily)&#39;, y= &quot;Tweet Count&quot;,
+           title = &quot;Timeseries Plot of Tweet Counts For Tweets \nClassified as Antagonistic &quot;, 
+           #subtitle = &quot;Graph 2&quot;, 
+           caption = &quot;Social Data Science Lab&quot;) +
+     theme_ipsum_rc()+
+     scale_x_date(date_breaks = &quot;1 month&quot;,date_labels = (&quot;%b-%y&quot;))
+
+b</code></pre>
+<p><img src="figure/antag_monthly_means.rmd/unnamed-chunk-2-1.png" width="9" height="9" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>?scale_x</code></pre>
+<pre><code>No documentation for &#39;scale_x&#39; in specified packages and libraries:
+you could try &#39;??scale_x&#39;</code></pre>
+<p>Finally here is the information we have been looking for.</p>
+<pre class="r"><code>start(ts_antagonistic) # first day of the dataset</code></pre>
+<pre><code>[1] &quot;2015-10-15&quot;</code></pre>
+<pre class="r"><code>end(ts_antagonistic) # last day of the dataset</code></pre>
+<pre><code>[1] &quot;2016-10-20&quot;</code></pre>
+<pre class="r"><code>monthly &lt;- apply.monthly(ts_antagonistic,sum)
+monthly &lt;- data.frame(date=index(monthly),coredata(monthly))
+# monthly %&gt;% glimpse()
+
+summary_mean &lt;- monthly %&gt;% 
+  mutate(pre_first_peak= ifelse(date&lt;&quot;2016-05-01&quot;, 1, 0)) %&gt;% #selected first day of May as the peak ends then 
+  group_by(pre_first_peak) %&gt;% 
+  summarise(., mean(coredata.monthly.)) %&gt;% 
+  select(pre_first_peak=pre_first_peak, mean_antag_count=`mean(coredata.monthly.)`)
+
+pre_count &lt;- round(summary_mean$mean_antag_count[2], 2)
+post_count &lt;- round(summary_mean$mean_antag_count[1], 2)</code></pre>
+<p>As seen above, mean monthly antagonistic tweet count before the first peak is <strong>1041.86</strong>; whereas mean monthly antagonistic tweet count is <strong>1041.86</strong>.</p>
+<div id="session-information" class="section level2">
+<h2>Session information</h2>
+<!-- Insert the session information into the document -->
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 3.4.2 (2017-09-28)
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+Running under: macOS Sierra 10.12.6
+
+Matrix products: default
+BLAS: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_GB.UTF-8/en_GB.UTF-8/en_GB.UTF-8/C/en_GB.UTF-8/en_GB.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] bindrcpp_0.2        hrbrthemes_0.3.3    xts_0.10-0         
+ [4] zoo_1.8-0           dplyr_0.7.4         purrr_0.2.4        
+ [7] readr_1.1.1         tidyr_0.7.2         tibble_1.3.4       
+[10] ggplot2_2.2.1       tidyverse_1.1.1     data.table_1.10.4-3
+
+loaded via a namespace (and not attached):
+ [1] reshape2_1.4.2   haven_1.1.0      lattice_0.20-35  colorspace_1.3-2
+ [5] htmltools_0.3.6  yaml_2.1.14      rlang_0.1.2      foreign_0.8-69  
+ [9] glue_1.1.1       bit64_0.9-7      modelr_0.1.1     readxl_1.0.0    
+[13] bindr_0.1        plyr_1.8.4       stringr_1.2.0    munsell_0.4.3   
+[17] gtable_0.2.0     cellranger_1.1.0 rvest_0.3.2      psych_1.7.8     
+[21] evaluate_0.10.1  labeling_0.3     knitr_1.17       forcats_0.2.0   
+[25] extrafont_0.17   parallel_3.4.2   Rttf2pt1_1.3.4   broom_0.4.2     
+[29] Rcpp_0.12.13     scales_0.5.0     backports_1.1.1  jsonlite_1.5    
+[33] bit_1.1-12       mnormt_1.5-5     hms_0.3          digest_0.6.12   
+[37] stringi_1.1.5    grid_3.4.2       rprojroot_1.2    tools_3.4.2     
+[41] magrittr_1.5     lazyeval_0.2.0   extrafontdb_1.0  pkgconfig_2.0.1 
+[45] xml2_1.1.1       lubridate_1.6.0  assertthat_0.2.0 rmarkdown_1.6   
+[49] httr_1.3.1       R6_2.2.2         nlme_3.1-131     git2r_0.19.0    
+[53] compiler_3.4.2  </code></pre>
+</div>
 
 <hr>
 <p>
