@@ -319,8 +319,10 @@ shared across the workflowr files. -->
 <p><strong>Last updated:</strong> 2017-11-10</p>
 <!-- Insert the code version (Git commit SHA1) if Git repository exists and R
  package git2r is installed -->
-<p><strong>Code version:</strong> fde7cd5</p>
+<p><strong>Code version:</strong> f3a27cb</p>
 <!-- Add your analysis here -->
+<div id="data-wrangling" class="section level2">
+<h2>Data Wrangling</h2>
 <p>This is a quick script to calculate mean monthly counts of antagonistic speech in the data set.</p>
 <p>First data I/O and converting to time series.</p>
 <pre class="r"><code>options(digits=3)
@@ -343,6 +345,9 @@ ts_antagonistic&lt;- xts(x = antagonistic_subset$classifier.hate.yes, order.by =
 ts_sum_antagonistic &lt;- apply.daily(ts_antagonistic,sum)
 ts_sum_df_antagonistic &lt;- data.frame(date=index(ts_sum_antagonistic), coredata(ts_sum_antagonistic))
 colnames(ts_sum_df_antagonistic)=c(&#39;date&#39;,&#39;sum&#39;)</code></pre>
+</div>
+<div id="plot" class="section level2">
+<h2>Plot</h2>
 <p>Next, lets take a look at the antagonistic time series plot again.</p>
 <pre class="r"><code>b &lt;- ggplot(ts_sum_df_antagonistic)+
      geom_line(aes(x=date,y=sum), colour=&quot;red&quot;)+
@@ -355,6 +360,9 @@ colnames(ts_sum_df_antagonistic)=c(&#39;date&#39;,&#39;sum&#39;)</code></pre>
 
 b</code></pre>
 <p><img src="figure/antag_monthly_means.rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="results" class="section level2">
+<h2>Results</h2>
 <p>Finally here is the information we have been looking for.</p>
 <pre class="r"><code>start(ts_antagonistic) # first day of the dataset</code></pre>
 <pre><code>[1] &quot;2015-10-15&quot;</code></pre>
@@ -372,7 +380,8 @@ summary_mean &lt;- monthly %&gt;%
 
 pre_count &lt;- round(summary_mean$mean_antag_count[2], 2)
 post_count &lt;- round(summary_mean$mean_antag_count[1], 2)</code></pre>
-<p>As seen above, mean monthly antagonistic tweet count before the first peak is <strong>1041.86</strong>; whereas mean monthly antagonistic tweet count is <strong>1041.86</strong>.</p>
+<p>As seen above, mean monthly antagonistic tweet count before the first peak is <strong>1041.86</strong>; whereas mean monthly antagonistic tweet count is <strong>1380.33</strong>.</p>
+</div>
 <div id="session-information" class="section level2">
 <h2>Session information</h2>
 <!-- Insert the session information into the document -->
