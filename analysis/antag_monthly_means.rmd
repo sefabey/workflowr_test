@@ -26,6 +26,7 @@ knitr::read_chunk("chunks.R")
 
 <!-- Add your analysis here -->
 
+##Data Wrangling
 This is a quick script to calculate mean monthly counts of antagonistic speech in the data set. 
 
 
@@ -57,6 +58,7 @@ colnames(ts_sum_df_antagonistic)=c('date','sum')
 
 ```
 
+##Plot
 
 Next, lets take a look at the antagonistic time series plot again. 
 
@@ -76,7 +78,10 @@ b
 
 ```
 
- Finally here is the information we have been looking for.
+
+##Results
+
+Finally here is the information we have been looking for.
  
 ```{r}
 start(ts_antagonistic) # first day of the dataset
@@ -98,7 +103,7 @@ post_count <- round(summary_mean$mean_antag_count[1], 2)
 ```
 
 As seen above, mean monthly antagonistic tweet count before the first peak is **`r pre_count `**; whereas mean monthly antagonistic tweet count is 
-**`r pre_count `**. 
+**`r post_count `**. 
 
  
  
