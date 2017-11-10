@@ -319,7 +319,7 @@ shared across the workflowr files. -->
 <p><strong>Last updated:</strong> 2017-11-10</p>
 <!-- Insert the code version (Git commit SHA1) if Git repository exists and R
  package git2r is installed -->
-<p><strong>Code version:</strong> ee6d7ba</p>
+<p><strong>Code version:</strong> bdfe5f2</p>
 <!-- Add your analysis here -->
 <div id="data-wrangling" class="section level2">
 <h2>Data Wrangling</h2>
@@ -356,10 +356,12 @@ colnames(ts_sum_df_antagonistic)=c(&#39;date&#39;,&#39;sum&#39;)</code></pre>
            #subtitle = &quot;Graph 2&quot;, 
            caption = &quot;Social Data Science Lab&quot;) +
      theme_ipsum_rc()+
-     scale_x_date(date_breaks = &quot;1 month&quot;,date_labels = (&quot;%b-%y&quot;))
+     scale_x_date(date_breaks = &quot;1 month&quot;,date_labels = (&quot;%b-%y&quot;))+
+  theme(axis.text.x = element_text(angle = 45, hjust = 0.8))
+
 
 b</code></pre>
-<p><img src="figure/antag_monthly_means.rmd/unnamed-chunk-2-1.png" width="8" height="7" style="display: block; margin: auto;" /></p>
+<p><img src="figure/antag_monthly_means.rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="results" class="section level2">
 <h2>Results</h2>
