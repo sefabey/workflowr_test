@@ -319,7 +319,7 @@ shared across the workflowr files. -->
 <p><strong>Last updated:</strong> 2017-11-10</p>
 <!-- Insert the code version (Git commit SHA1) if Git repository exists and R
  package git2r is installed -->
-<p><strong>Code version:</strong> 61aec97</p>
+<p><strong>Code version:</strong> fde7cd5</p>
 <!-- Add your analysis here -->
 <p>This is a quick script to calculate mean monthly counts of antagonistic speech in the data set.</p>
 <p>First data I/O and converting to time series.</p>
@@ -354,10 +354,7 @@ colnames(ts_sum_df_antagonistic)=c(&#39;date&#39;,&#39;sum&#39;)</code></pre>
      scale_x_date(date_breaks = &quot;1 month&quot;,date_labels = (&quot;%b-%y&quot;))
 
 b</code></pre>
-<p><img src="figure/antag_monthly_means.rmd/unnamed-chunk-2-1.png" width="9" height="9" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>?scale_x</code></pre>
-<pre><code>No documentation for &#39;scale_x&#39; in specified packages and libraries:
-you could try &#39;??scale_x&#39;</code></pre>
+<p><img src="figure/antag_monthly_means.rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Finally here is the information we have been looking for.</p>
 <pre class="r"><code>start(ts_antagonistic) # first day of the dataset</code></pre>
 <pre><code>[1] &quot;2015-10-15&quot;</code></pre>
