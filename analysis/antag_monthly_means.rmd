@@ -26,7 +26,7 @@ knitr::read_chunk("chunks.R")
 
 <!-- Add your analysis here -->
 
-##Data Wrangling
+## Data Wrangling
 This is a quick script to calculate mean monthly counts of antagonistic speech in the data set. 
 
 
@@ -58,12 +58,12 @@ colnames(ts_sum_df_antagonistic)=c('date','sum')
 
 ```
 
-##Plot
+## Plot
 
 Next, lets take a look at the antagonistic time series plot again. 
 
 
-```{r}
+```{r, out.width=8,out.height=7}
 
 b <- ggplot(ts_sum_df_antagonistic)+
      geom_line(aes(x=date,y=sum), colour="red")+
@@ -79,7 +79,7 @@ b
 ```
 
 
-##Results
+## Results
 
 Finally here is the information we have been looking for.
  
