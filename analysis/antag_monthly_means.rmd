@@ -106,8 +106,7 @@ post_count <- round(summary_mean$mean_antag_count[1], 2)
   
 ```
 
-As seen above, mean monthly antagonistic tweet count before the first peak is **`r pre_count `**; whereas mean monthly antagonistic tweet count is 
-**`r post_count `**. 
+As seen above, mean monthly antagonistic tweet count before the first peak is **`r pre_count `**; whereas mean monthly antagonistic tweet count after the first peak is **`r post_count `**. 
 
  
  
